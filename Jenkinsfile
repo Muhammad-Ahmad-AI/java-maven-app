@@ -1,7 +1,4 @@
 #!/usr/bin/env groovy
-
-CODE_CHANGES = getGitChanges()
-
 pipeline {
     agent none
     stages {
