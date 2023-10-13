@@ -35,9 +35,10 @@ pipeline {
     }
     post {
         always{
-            //
+            echo "I always run"
         }
         success {
+            echo "I run on success"
         }
     }
 }
