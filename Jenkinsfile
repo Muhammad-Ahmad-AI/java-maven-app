@@ -9,7 +9,6 @@ pipeline {
             steps {
                 script {
                     echo "Building the application..."
-                    echo ${CODE_CHANGES}
                 }
             }
         }
