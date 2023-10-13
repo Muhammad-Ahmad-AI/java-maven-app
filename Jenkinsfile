@@ -1,5 +1,7 @@
 #!/usr/bin/env groovy
 
+CODE_CHANGES = getGitChanges()
+
 pipeline {
     agent none
     stages {
@@ -7,10 +9,16 @@ pipeline {
             steps {
                 script {
                     echo "Building the application..."
+                    echo ${CODE_CHANGES}
                 }
             }
         }
         stage('test') {
+            when {
+                expression {
+                    BRANCH_NAME == 'dev'
+                }
+            }
             steps {
                 script {
                     echo "Testing the application..."
@@ -23,6 +31,13 @@ pipeline {
                     echo "Deploying the application..."
                 }
             }
+        }
+    }
+    post {
+        always{
+            //
+        }
+        success {
         }
     }
 }
